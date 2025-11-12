@@ -1,5 +1,5 @@
 export interface IResponseApi {
   status: boolean;
-  value: any;
+  values: any;
   msg: string;
 }

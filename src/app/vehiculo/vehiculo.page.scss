@@ -1,0 +1,18 @@
+ion-list {
+  margin-top: 8px;
+}
+
+ion-item {
+  --inner-padding-end: 8px;
+}
+
+ion-label h2 {
+  font-weight: 600;
+  color: #2563eb; // Azul similar al de tu tabla
+  margin-bottom: 4px;
+}
+
+ion-label p {
+  font-size: 13px;
+  color: #6b7280;
+}
