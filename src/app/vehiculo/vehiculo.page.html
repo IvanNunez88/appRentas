@@ -5,16 +5,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Vehículo</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <!-- LISTA DE VEHÍCULOS -->
   <ion-list>
     <ion-item *ngFor="let lst of listaVehiculos">
-      <ion-label>
+      <ion-label class="ion-text-wrap">
         <h2>{{ lst.vehiculo }}</h2>
         <p>
           {{ lst.tamano }} - {{ lst.capacidad }} • Renta: {{ lst.pRenta |
@@ -32,10 +26,11 @@
         color="primary"
         size="small"
         slot="end"
+        shape="round"
+        class="vehiculo-edit-btn"
         (click)="editarVehiculo(lst)"
       >
-        <!-- <ion-icon slot="start" name="pencil-outline"></ion-icon> -->
-        Editar
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

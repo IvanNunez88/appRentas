@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { SharedModule } from '../shared/shared.module';
+import { Router } from '@angular/router';
 import { VehiculoService } from '../Services/Vehiculo.service';
+import { Vehiculo } from './models/vehiculo.interface';
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-vehiculo',
@@ -10,13 +12,20 @@ import { VehiculoService } from '../Services/Vehiculo.service';
   standalone: true,
   imports: [SharedModule],
 })
-export class VehiculoPage implements OnInit {
-  listaVehiculos: iRepVehiculo[] = [];
+export class VehiculoPage implements OnInit, ViewWillEnter {
+  listaVehiculos: Vehiculo[] = [];
 
-  constructor(private _vehiculoService: VehiculoService) {}
+  constructor(
+    private _vehiculoService: VehiculoService,
+    private router: Router
+  ) {}
 
   async ngOnInit() {
     await this.cargarVehiculos();
+  }
+
+  ionViewWillEnter() {
+    this.cargarVehiculos();
   }
 
   private async cargarVehiculos() {
@@ -29,24 +38,28 @@ export class VehiculoPage implements OnInit {
     });
   }
 
-  editarVehiculo(vehiculo: iRepVehiculo) {
-    // Aquí puedes abrir un modal, navegar a otra página o setear un formulario con los datos
-    console.log('Editar vehículo', vehiculo);
+  editarVehiculo(vehiculo: Vehiculo) {
+    this.blurActiveElement();
+    this.router.navigate(['/detalle'], {
+      state: {
+        vehiculo: vehiculo,
+      },
+    });
   }
 
   crearVehiculo() {
-    // Acción para agregar un nuevo vehículo (abrir modal/formulario)
-    console.log('Crear vehículo');
+    this.blurActiveElement();
+    this.router.navigate(['/detalle'], {
+      state: {
+        vehiculo: null,
+      },
+    });
   }
-}
 
-interface iRepVehiculo {
-  idVehiculo: number;
-  vehiculo: string;
-  idTamano: number;
-  tamano: string;
-  capacidad: number;
-  pRenta: number;
-  isActivo: boolean;
-  estatus: string;
+  private blurActiveElement() {
+    const activeElement = document.activeElement;
+    if (activeElement instanceof HTMLElement) {
+      activeElement.blur();
+    }
+  }
 }

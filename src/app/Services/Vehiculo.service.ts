@@ -12,28 +12,36 @@ export class VehiculoService {
 
   constructor(private http: HttpClient) {}
 
-  guardar(pDicDatos: Record<string, any>): Observable<IResponseApi> {
-    return this.http.request<IResponseApi>('post', `${this.urlApi}Guardar`, {
-      body: {
-        descrip: pDicDatos['descrip'],
-        idTamaño: pDicDatos['idTamaño'],
-        capacidad: pDicDatos['capacidad'],
-        pRenta: pDicDatos['pRenta'],
-      },
-    });
+  agregarVehiculo(pDicDatos: Record<string, any>): Observable<IResponseApi> {
+    return this.http.request<IResponseApi>(
+      'post',
+      `${this.urlApi}AgregarVehiculo`,
+      {
+        body: {
+          descrip: pDicDatos['descrip'],
+          idTamaño: pDicDatos['idTamaño'],
+          capacidad: pDicDatos['capacidad'],
+          pRenta: pDicDatos['pRenta'],
+        },
+      }
+    );
   }
 
-  actualizar(pDicDatos: Record<string, any>): Observable<IResponseApi> {
-    return this.http.request<IResponseApi>('put', `${this.urlApi}Actualizar`, {
-      body: {
-        idVehiculo: pDicDatos['idVehiculo'],
-        descrip: pDicDatos['descrip'],
-        idTamaño: pDicDatos['idTamaño'],
-        capacidad: pDicDatos['capacidad'],
-        pRenta: pDicDatos['pRenta'],
-        isEstado: pDicDatos['isEstado'],
-      },
-    });
+  actualizarVehiculo(pDicDatos: Record<string, any>): Observable<IResponseApi> {
+    return this.http.request<IResponseApi>(
+      'put',
+      `${this.urlApi}ActualizarVehiculo`,
+      {
+        body: {
+          idVehiculo: pDicDatos['idVehiculo'],
+          descrip: pDicDatos['descrip'],
+          idTamaño: pDicDatos['idTamaño'],
+          capacidad: pDicDatos['capacidad'],
+          pRenta: pDicDatos['pRenta'],
+          isEstado: pDicDatos['isEstado'],
+        },
+      }
+    );
   }
 
   listaVehiculos(): Observable<IResponseApi> {

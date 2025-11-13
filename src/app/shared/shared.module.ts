@@ -1,11 +1,25 @@
 import { NgModule } from '@angular/core';
-import { IonAlert, IonButton } from '@ionic/angular/standalone';
+import {
+  IonAlert,
+  IonButton,
+  IonButtons,
+  IonBackButton,
+} from '@ionic/angular/standalone';
 import { IonRippleEffect } from '@ionic/angular/standalone';
 import { IonCheckbox } from '@ionic/angular/standalone';
 import { IonDatetime } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonModal } from '@ionic/angular/standalone';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonToggle,
+  IonNote,
+  IonText,
+} from '@ionic/angular/standalone';
 import {
   IonBadge,
   IonFab,
@@ -29,6 +43,7 @@ import {
   IonCardSubtitle,
   IonCardTitle,
 } from '@ionic/angular/standalone';
+import { IonLoading } from '@ionic/angular/standalone';
 
 @NgModule({
   declarations: [],
@@ -58,6 +73,16 @@ import {
     IonIcon,
     CommonModule,
     IonModal,
+    ReactiveFormsModule,
+    IonInput,
+    IonSelect,
+    IonSelectOption,
+    IonToggle,
+    IonNote,
+    IonText,
+    IonButtons,
+    IonBackButton,
+    IonLoading,
   ],
   exports: [
     IonButton,
@@ -85,6 +110,16 @@ import {
     IonIcon,
     CommonModule,
     IonModal,
+    ReactiveFormsModule,
+    IonInput,
+    IonSelect,
+    IonSelectOption,
+    IonToggle,
+    IonNote,
+    IonText,
+    IonButtons,
+    IonBackButton,
+    IonLoading,
   ],
   providers: [],
 })
